@@ -1,0 +1,50 @@
+/* The background
+* This can be image or color, note the !important at the end.
+*/
+body {
+    background-color:#fff !important;
+}
+
+/* Title image (The "WordPress Logo") Mus use image as a Background!
+* Remember to update the height and width your image's dimensions
+*/
+#login h1 a {
+    background:url(images/login-logo.png) 0 0 no-repeat;
+    width:190px;
+    height:190px;
+}
+
+/* The Form ( The login box )
+* Background color, border, shadow, etc..
+*/
+#login form {
+    background-color:#fff;
+}
+
+/* The Login Fields
+* Username and Password
+*/
+#login .input {
+    background-color:#ccc
+}
+
+
+/*
+* The Submit Button
+*/
+#login input[type=submit] {
+    background-color:#e74c3c;
+    border-radius:0px;
+    border:none;
+    border-bottom:4px solid #c0392b;
+}
+
+#login input[type=submit]:active {}
+
+/*
+* The Back to blog and Forgot Password link
+*/
+#nav a,
+#backtoblog a {
+    color:#000 !important;
+}

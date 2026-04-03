@@ -1,0 +1,3 @@
+<Files "Sw.js">
+Header Set Service-Worker-allowed "/"
+</Files>
