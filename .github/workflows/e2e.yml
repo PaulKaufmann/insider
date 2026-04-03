@@ -26,7 +26,12 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Write .env from secret
-        run: echo "${{ secrets.env }}" > tests/.env
+        env:
+          ENV_FILE: ${{ secrets.env }}
+        run: printf '%s' "$ENV_FILE" > tests/.env
+
+      - name: Debug .env (ohne Werte)
+        run: grep -o '^[^=]*' tests/.env
 
       - name: Run E2E tests
         run: npx playwright test
