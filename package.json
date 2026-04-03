@@ -1,0 +1,16 @@
+{
+  "name": "insider-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test:php": "bash tests/php/run_all.sh",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:report": "playwright show-report",
+    "test": "npm run test:php && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "dotenv": "^17.4.0"
+  }
+}
