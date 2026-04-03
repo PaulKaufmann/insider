@@ -18,5 +18,4 @@ jobs:
           php-version: '8.4'
 
       - name: Run PHP logic tests
-        working-directory: dev
         run: bash tests/php/run_all.sh
