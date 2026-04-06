@@ -28,10 +28,13 @@ jobs:
       - name: Write .env from secret
         env:
           ENV_FILE: ${{ secrets.ENV }}
-        run: printf '%s' "$ENV_FILE" > tests/.env
+        run: |
+          echo "Secret length: ${#ENV_FILE}"
+          printf '%s\n' "$ENV_FILE" > tests/.env
+          echo "File size: $(wc -c < tests/.env)"
 
-      - name: Debug .env (ohne Werte)
-        run: grep -o '^[^=]*' tests/.env
+      - name: Debug .env keys (ohne Werte)
+        run: grep -o '^[^=]*' tests/.env || echo "File empty or no keys found"
 
       - name: Run E2E tests
         run: npx playwright test
