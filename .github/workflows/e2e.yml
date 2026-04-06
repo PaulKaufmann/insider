@@ -29,15 +29,18 @@ jobs:
         env:
           ENV_FILE: ${{ secrets.ENV }}
         run: |
-          echo "Secret length: ${#ENV_FILE}"
           printf '%s\n' "$ENV_FILE" > tests/.env
-          echo "File size: $(wc -c < tests/.env)"
-
-      - name: Debug .env keys (ohne Werte)
-        run: grep -o '^[^=]*' tests/.env || echo "File empty or no keys found"
+          echo "Keys found: $(grep -c '=' tests/.env)"
 
       - name: Run E2E tests
-        run: npx playwright test
+        env:
+          ENV_FILE: ${{ secrets.ENV }}
+        run: |
+          # Zusätzlich direkt als Umgebungsvariablen exportieren
+          set -a
+          source tests/.env
+          set +a
+          npx playwright test
 
       - name: Upload test report
         uses: actions/upload-artifact@v4
