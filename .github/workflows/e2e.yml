@@ -27,7 +27,7 @@ jobs:
 
       - name: Write .env from secret
         env:
-          ENV_FILE: ${{ secrets.env }}
+          ENV_FILE: ${{ secrets.ENV }}
         run: printf '%s' "$ENV_FILE" > tests/.env
 
       - name: Debug .env (ohne Werte)
